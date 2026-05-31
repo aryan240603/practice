@@ -37,16 +37,17 @@ export default function RootLayout({
               style={{ backgroundColor: "lightblue", padding: "2rem" }}
               className="text-3xl bg-amber-800 font-bold underline"
             >
-              Header
+              Navbar
             </h1>
           </header>
-            {children}
-          <footer >
+          {children}
+          <footer>
             <h1
-            style={{ justifyItems: "center", padding: "2rem" }}
-              className="text-3xl bg-amber-500 font-bold underline"
+              style={{ justifyItems: "center", padding: "2rem", textAlign: "center", backgroundColor: "#f0f0f0" }}
+              className="text-2xl font-bold underline"
             >
-              Footer
+                        © 2024 Complex Dashboard. All rights reserved.
+
             </h1>
           </footer>
         </div>
