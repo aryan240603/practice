@@ -1,19 +1,24 @@
 import Analytics from "./@analytics/page";
 import Notifications from "./@notifications/page";
-import Revenue from "./@revenue/page";
+import Revenue from "./@revenue/page"
+import Login from "./@login/page";
+import Card from "@/app/components/card";
 
 export default function ComplexDashboardLayout({
   children,
-  users,
-  revenue,
+  analytics,
   notifications,
+  revenue,
+  login,
 }: {
   children: React.ReactNode;
-  users: React.ReactNode;
-  revenue: React.ReactNode;
+  analytics: React.ReactNode;
   notifications: React.ReactNode;
+  revenue: React.ReactNode;
+  login: React.ReactNode;
 }) {
-  return (
+  const isLoggedIn = true; // Simulate user authentication status
+    return isLoggedIn ? (
     <div
       style={{
         display: "grid",
@@ -21,7 +26,7 @@ export default function ComplexDashboardLayout({
         minHeight: "100vh",
       }}
     >
-      <div>{children}</div>
+      {children}
       <div
         style={{
           display: "flex",
@@ -29,18 +34,30 @@ export default function ComplexDashboardLayout({
           padding: "2rem",
         }}
       >
-        <div style = {{display: "flex", flexDirection: "column", flex: 1, marginRight: "1rem"}}>
-        <div>
-          <Analytics />
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            flex: 1,
+            marginRight: "1rem",
+          }}
+        >
+          <div>
+            {analytics}
+          </div>
+          <div>
+            {revenue}
+          </div>
         </div>
-        <div>
-          <Revenue />
-        </div>
-        </div>
-        <div style = {{display: "flex", flex: 1}}>
-          <Notifications />
+        <div style={{ display: "flex", flex: 1 }}>
+          {notifications}
         </div>
       </div>
     </div>
-  );
+  ) : 
+    <Card>
+      Please login to view the dashboard.
+    </Card>  
 }
+
+
